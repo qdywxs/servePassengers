@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+
+
+		<script>
+			var passengers = [ {name: "Oli", paid: true, ticket: "coach"},
+			                 {name: "Aman", paid: false, ticket: "firstclass"},
+			                 {name: "Laden", paid: true, ticket: "firstclass"},
+			                 {name: "Jobs", paid: true, ticket: "premium"} ];
+			function createDrinkOrder(passenger) {
+			  var orderFunction;
+			  if(passenger.ticket === "firstclass") {
+			    orderFunction = function() {
+			      alert("Would you like a cocktail or wine?");
+			    };
+			  }else if(passenger.ticket === "premium") {
+			    orderFunction = function() {
+			      alert("Would you like wine,cola or water?");
+			    };
+			  }else {
+			    orderFunction = function() {
+			      alert("Your choice is cola or water.");
+			    };
+			  }
+			  return orderFunction;
+			}
+
+			function createDinnerOrder(passenger) {
+			  var orderFunction;
+			  if(passenger.ticket === "firstclass") {
+			    orderFunction = function() {
+			      alert("Would you like chicken or pasta?");
+			    };
+			  }else if(passenger.ticket === "premium") {
+			    orderFunction = function() {
+			      alert("Would you like a snack box or cheese plate?");
+			    };
+			  }else {
+			    orderFunction = function() {
+			      alert("Would you like peanuts or pretzels")
+			    };
+			  }
+			  return orderFunction;
+			}	
+
+			function serveCustomer(passenger) {
+			  var getDrinkOrderFunction = createDrinkOrder(passenger);
+			  var getDinnerOrderFunction = createDinnerOrder(passenger);
+
+			  getDrinkOrderFunction();
+			  getDinnerOrderFunction();
+			  
+			}
+
+			function servePassengers(passengers) {
+			  for(var i = 0;i < passengers.length;i++) {
+			    serveCustomer(passengers[i]);
+			  }
+			}
+
+			  servePassengers(passengers);
+
+			</script>
+
+	</body>
+</html>		
